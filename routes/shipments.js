@@ -19,33 +19,24 @@ const { shipProduct } = require("../shipItApi");
  */
 
 router.post("/", async function (req, res, next) {
-  console.log('shipments',)
   const { productId, name, addr, zip } = req.body;
   const shipment = { productId, name, addr, zip };
 
   const result = jsonschema.validate(
-    shipment, shipmentSchema, { required: true });
+    shipment, 
+    shipmentSchema, 
+    { required: true }
+  );
+  
   if (!result.valid) {
     // pass validation errors to error handler
     //  (the "stack" key is generally the most useful)
     const errs = result.errors.map(err => err.stack);
-    console.log('$$$$$$$$$$$$$$$$ errs = ',errs);
     throw new BadRequestError(errs);
   }
 
-
-
-
-
-
-
   const shipId = await shipProduct({ productId, name, addr, zip });
   return res.json({ shipped: shipId });
-
-
-
-
-
 
 });
 

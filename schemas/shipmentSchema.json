@@ -5,21 +5,25 @@
     "description": "Shipment of item.",
     "type": "object",
     "properties": {
-      "productId": {
-        "type": "integer",
-        "minimum":1000
-      },
-      "name": {
-        "type": "string"
-      },
-      "addr": {"type": "string"},
-      "zip": {"type": "string"}
+        "productId": {
+            "type": "integer",
+            "minimum": 1000
+        },
+        "name": {
+            "type": "string"
+        },
+        "addr": {
+            "type": "string"
+        },
+        "zip": {
+            "type": "string"
+        }
     },
     "additionalProperties": false,
     "required": [
-      "productId",
-      "name",
-      "addr",
-      "zip"
+        "productId",
+        "name",
+        "addr",
+        "zip"
     ]
-  }
+}
